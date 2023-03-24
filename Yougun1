@@ -1,0 +1,15 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int n;
+    char word[1001];
+
+    scanf("%s", word);
+    scanf("%d", &n);
+
+    printf("%c\n", word[n - 1]);
+
+    return 0;
+}
