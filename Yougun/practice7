@@ -1,0 +1,68 @@
+#include<stdio.h>
+#include<windows.h>
+#include<time.h>
+/*
+int main(void) {
+			int cnt = 0;
+			int ch;
+				while (1)
+				{
+					
+					printf("RED\n");
+					Sleep(100);
+					printf("BLUE\n");
+					Sleep(100);
+					printf("YELLOW\n");
+					Sleep(100);
+					cnt++;
+					
+					if (cnt == 10)
+						{
+							return 0;
+						}
+				}
+			}
+*/
+
+int main(void) {
+	int cnt = 0;
+	int ch;
+	while (1)
+		{
+		ch = getchar();
+		printf("RED");
+		break;
+		}
+	while (1)
+	{
+		ch = getchar();
+		printf("BLUE");
+		break;
+	}
+	while (1)
+	{
+		ch = getchar();
+		printf("YELLOW");
+		break;
+	}
+	while (1)
+	{
+		ch = getchar();
+		printf("RED");
+		break;
+	}
+	while (1)
+	{
+		ch = getchar();
+		printf("BLUE");
+		break;
+	}
+	while (1)
+	{
+		ch = getchar();
+		printf("YELLOW");
+		break;
+	}
+}
+
+	
