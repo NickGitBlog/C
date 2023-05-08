@@ -1,0 +1,26 @@
+_CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<string.h>
+
+int main()
+{
+    int num, end_num = 0;
+    char string[1000] = "\0";
+    char start, end;
+
+    scanf("%d", &num);
+
+    for (int i = 0; i < num; i++)
+    {
+        scanf("%s", string);
+
+        end_num = strlen(string);
+
+        start = string[0];
+        end = string[end_num - 1];
+
+        printf("%c%c\n", start, end);
+    }
+
+    return 0;
+}
