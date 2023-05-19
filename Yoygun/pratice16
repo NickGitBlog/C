@@ -1,0 +1,15 @@
+#include<stdio.h>
+
+int main() {
+	int ch;
+
+	while (1) {
+		ch = getchar();
+		printf("RED");
+		ch = getchar();
+		printf("BLUE");
+		ch = getchar();
+		printf("YELLOW");
+	}
+	return 0;
+}
