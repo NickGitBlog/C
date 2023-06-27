@@ -1,0 +1,63 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI; // UI를 사용하므로 잊지 않고 추가한다
+using UnityEngine.SceneManagement; // LoadScene을 사용하기 위해 필요 !!
+
+//public int score = 0;
+public class GameDirector : MonoBehaviour
+{
+    GameObject hpGauge;
+    GameObject Score;
+    float delta = 0;
+    public int score = 0;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        this.hpGauge = GameObject.Find("hpGauge");
+        this.Score = GameObject.Find("Score");
+    }
+
+    // HP 10% 감소
+    public void DecreaseHp()
+    {
+        this.hpGauge.GetComponent<Image>().fillAmount -= 0.1f;
+    }
+
+    // HP 20% 증가
+    public void IncreaseHp()
+    {
+        this.hpGauge.GetComponent<Image>().fillAmount += 0.2f;
+        if(this.hpGauge.GetComponent<Image>().fillAmount > 1.0)
+            this.hpGauge.GetComponent<Image>().fillAmount = 1.0f;
+    }
+
+    // Hp 20% 감소
+    public void DecreaseHp2()
+    {
+        this.hpGauge.GetComponent<Image>().fillAmount -= 0.2f;
+    }
+
+
+    // Update is called once per frame
+    void Update()
+    {
+        this.delta += Time.deltaTime; // float
+        score = (int)this.delta;    // cast(형변환) : int <-- float
+
+        // HP가 0이되면 ClearScene으로 넘어감
+        if (this.hpGauge.GetComponent<Image>().fillAmount == 0.0f)
+        {
+            SceneManager.LoadScene("ClearScene");
+        }
+        else if (this.hpGauge.GetComponent<Image>().fillAmount < 0.0f)
+        {
+            SceneManager.LoadScene("ClearScene");
+        }
+        else
+        {
+            this.Score.GetComponent<Text>().text = "Score : " + score.ToString(); //Score 올라감
+        }
+    }
+}
