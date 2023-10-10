@@ -1,0 +1,68 @@
+total = 0
+
+a = input("생성다항식 입력 : ")
+number = a.split('+')  
+
+if(number[-1] == '1'):  
+    number = list(filter(str.isdigit, a)) 
+    number = list(map(int, number)) 
+    lastnumber = number[-1]  
+    number = number[:-1]  
+else: 
+    number = list(filter(str.isdigit, a)) 
+    number = list(map(int, number))
+    lastnumber = 0
+
+cnt = number[0] 
+c = []
+for i in range(cnt + 1):
+    c.insert(len(c), 5) 
+
+for x in number:  
+    total = 2 ** int(x) + total
+
+total = total + lastnumber  
+
+a = format(total, 'b') 
+a = list(map(int, a))
+
+
+b = input("전송데이터 입력 : ")
+b = list(map(int, b))
+
+for i in range(cnt):
+    b.insert(len(b), 0)  
+
+cc = 0
+for i in range(0, len(a)):   
+   if b[0] == 1:            
+    c[i] = int(a[i] ^ b[i]) 
+    cc = cc + 1
+   else:                  
+    c[i] = int(b[i] ^ 0)  
+    cc = cc + 1
+   if (i == len(a) - 1): 
+    del c[0]             
+    c.append(b[cc])      
+    cc = cc + 1
+
+for j in range(len(b) - len(a)):  
+    if c[0] == 1:
+        for i in range(0, len(a)):
+          c[i] = int(a[i] ^ c[i])
+    else:
+        for i in range(0, len(a)):
+          c[i] = int(c[i] ^ 0)
+    if (i == len(a) - 1):
+        del c[0]
+        if cc != len(b):
+            c.append(b[cc])
+            cc = cc + 1
+
+print("출력결과(체크섬) = ", end="")
+for i in range(len(c)):
+    print(c[i], end="")
+print("")
+for i in range(cnt):
+    b.pop()
+
